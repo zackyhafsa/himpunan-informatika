@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Navbar() {
   return (
     <div className="shadow-md fixed top-0 left-0 right-0 bg-white z-[9999]">
@@ -11,10 +13,10 @@ export default function Navbar() {
           </h1>
         </div>
         <div className="flex gap-5">
-          <a href="">Beranda</a>
-          <a href="">Berita</a>
-          <a href="">Tentang</a>
-          <a href="">Saran</a>
+          <Link href="/">Beranda</Link>
+          <Link href="/struktural">Struktural</Link>
+          <Link href="">Tentang</Link>
+          <Link href="">Saran</Link>
         </div>
       </div>
     </div>
