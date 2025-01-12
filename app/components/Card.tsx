@@ -1,7 +1,18 @@
-export default function Card({ position, name }: { position: string; name: string }) {
+export default function Card({
+  position,
+  name,
+  background,
+}: {
+  position: string;
+  name: string;
+  background: string;
+}) {
   return (
     <div className="">
-      <div className="bg-red-700  min-w-60 min-h-72 rounded-md shadow-md"></div>
+      <div
+        className="  min-w-60 min-h-72 rounded-md shadow-md bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${background})` }}
+      ></div>
       <div className="text-slate-800">
         <h1 className="font-bold text-xl">{position}</h1>
         <p>{name}</p>
@@ -10,10 +21,21 @@ export default function Card({ position, name }: { position: string; name: strin
   );
 }
 
-export const LargeCard = ({ position, name }: { position: string; name: string }) => {
+export const LargeCard = ({
+  position,
+  name,
+  background,
+}: {
+  position: string;
+  name: string;
+  background: string;
+}) => {
   return (
-    <div className="w-full h-72">
-      <div className="bg-red-700 w-full h-full rounded-md"></div>
+    <div className="w-full">
+      <div
+        className=" w-full h-72 rounded-md bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${background})` }}
+      ></div>
       <div className="text-slate-800">
         <h1 className="font-bold text-xl">{position}</h1>
         <p>{name}</p>

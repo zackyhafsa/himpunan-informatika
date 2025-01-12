@@ -4,19 +4,56 @@ import React, { useState, useRef, useEffect } from "react";
 import { IoIosChatbubbles, IoMdSend, IoMdCloseCircle } from "react-icons/io";
 import { motion, AnimatePresence } from "framer-motion";
 
+// Sesuaikan interface
+interface DisplayMessage {
+  id: number;
+  text: string;
+  sender: "user" | "model";
+}
+
 interface Message {
   id: number;
   text: string;
-  sender: "user" | "bot";
+  sender: "user" | "model";
+}
+
+interface GeminiMessage {
+  role: "user" | "model";
+  parts: string | { text: string };
+}
+
+// Fungsi pembersihan teks (bisa di file terpisah atau di dalam komponen)
+function cleanAIResponse(text: string): string {
+  return text
+    .replace(/\*{2,}/g, "*") // Hapus asterisk berlebihan
+    .replace(/\s+/g, " ") // Normalisasi spasi
+    .replace(/^\s+|\s+$/g, "") // Hapus spasi di awal dan akhir
+    .trim();
 }
 
 const Bubble = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    { id: 1, text: "Halo! Ada yang bisa saya bantu? 😁", sender: "bot" },
+  const [messages, setMessages] = useState<DisplayMessage[]>([
+    {
+      id: 1,
+      text: "Halo! Ada yang bisa saya bantu? 😁",
+      sender: "model",
+    },
   ]);
   const [inputMessage, setInputMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  const renderMessage = (message: string) => {
+    // Split pesan dan wrap bagian yang diberi *
+    return message.split(/(\*.*?\*)/).map((part, index) => {
+      if (part.startsWith("*") && part.endsWith("*")) {
+        // Hapus asterisk dan buat strong
+        return <strong key={index}>{part.slice(1, -1)}</strong>;
+      }
+      return part;
+    });
+  };
 
   useEffect(() => {
     if (chatContainerRef.current) {
@@ -35,45 +72,70 @@ const Bubble = () => {
       sender: "user",
     };
 
+    // Persiapkan pesan untuk dikirim
+    const apiMessages = [
+      ...messages
+        .filter((msg) => msg.id !== 1) // Abaikan pesan pembuka
+        .map((msg) => ({
+          role: msg.sender === "user" ? "user" : "model",
+          parts: msg.text,
+        })),
+      {
+        role: "user",
+        parts: inputMessage,
+      },
+    ];
+
     setMessages((prev) => [...prev, userMessage]);
     setInputMessage("");
+    setIsLoading(true);
 
     try {
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: inputMessage }),
+        body: JSON.stringify({
+          messages: apiMessages,
+        }),
       });
 
       const data = await response.json();
 
-      if (response.ok) {
+      if (data.success) {
+        // Bersihkan respons AI
+        const cleanedMessage = cleanAIResponse(data.message);
+
         const botMessage: Message = {
           id: Date.now() + 1,
-          text: data.reply,
-          sender: "bot",
+          text: cleanedMessage,
+          sender: "model",
         };
+
         setMessages((prev) => [...prev, botMessage]);
       } else {
         const errorMessage: Message = {
           id: Date.now() + 1,
-          text: `Oops! Ada masalah: ${data.error}`,
-          sender: "bot",
+          text: data.error || "Terjadi kesalahan saat mendapatkan respons.",
+          sender: "model",
         };
+
         setMessages((prev) => [...prev, errorMessage]);
       }
-    } catch {
+    } catch (error) {
       const errorMessage: Message = {
         id: Date.now() + 1,
-        text: `Oops! Tidak bisa terhubung ke server.`,
-        sender: "bot",
+        text: "Kesalahan jaringan atau server.",
+        sender: "model",
       };
+
       setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setIsLoading(false);
     }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") sendMessage();
+    if (e.key === "Enter" && !isLoading) sendMessage();
   };
 
   return (
@@ -95,7 +157,7 @@ const Bubble = () => {
             exit={{ opacity: 0 }}
           >
             <motion.div
-              className="bg-white rounded-lg w-[600px] h-[500px] flex flex-col relative"
+              className="bg-white rounded-lg w-[600px] h-[500px] flex flex-col relative max-sm:w-full max-sm:mx-[5%]"
               initial={{ scale: 0.9 }}
               animate={{ scale: 1 }}
               exit={{ scale: 0.9 }}
@@ -116,10 +178,19 @@ const Bubble = () => {
                         msg.sender === "user" ? "bg-red-700 text-white" : "bg-gray-200 text-black"
                       }`}
                     >
-                      {msg.text}
+                      {renderMessage(msg.text)}
                     </div>
                   </motion.div>
                 ))}
+                {isLoading && (
+                  <div className="flex justify-start">
+                    <div className="bg-gray-200 text-black p-3 rounded-lg flex gap-1">
+                      <div className="h-1 w-1 bg-gray-800 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                      <div className="h-1 w-1 bg-gray-800 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                      <div className="h-1 w-1 bg-gray-800 rounded-full animate-bounce"></div>
+                    </div>
+                  </div>
+                )}
               </div>
               <div className="p-4 border-t flex items-center relative">
                 <input
@@ -129,10 +200,12 @@ const Bubble = () => {
                   onKeyPress={handleKeyPress}
                   placeholder="Ketik pesan..."
                   className="flex-grow p-2 border rounded-lg focus:outline-red-700"
+                  disabled={isLoading}
                 />
                 <button
                   onClick={sendMessage}
                   className="absolute bg-red-700 text-white p-2 rounded-lg right-5"
+                  disabled={isLoading}
                 >
                   <IoMdSend />
                 </button>
