@@ -46,22 +46,22 @@ const About = () => {
           variants={containerVariants}
         >
           <motion.div className="col-span-2" variants={itemVariants}>
-            <LargeCard position="Ketua Himpunan" name="Aep Saepuloh" background="aep.jpeg" />
+            <LargeCard position="Ketua Himpunan" name="Aep Saepuloh" background="bph/aep.webp" />
           </motion.div>
           <motion.div className="col-span-2 " variants={itemVariants}>
             <LargeCard
               position="Wakil Ketua Himpunan"
               name="Desfi Silvia Aros"
-              background="desfi.jpg"
+              background="bph/desfi.webp"
             />
           </motion.div>
 
           {/* Animasi untuk Card */}
           {[
-            { position: "Sekretaris 1", name: "Mira Yunisa", background: "mira.jpg" },
-            { position: "Sekretaris 2", name: "Haura Zahra", background: "haura.jpg" },
-            { position: "Bendahara 1", name: "Hegar Zalekania", background: "hegar.jpeg" },
-            { position: "Bendahara 2", name: "Retno Sari Sirotujanah", background: "retno.jpg" },
+            { position: "Sekretaris 1", name: "Mira Yunisa", background: "bph/mira.webp" },
+            { position: "Sekretaris 2", name: "Haura Zahra", background: "bph/haura.webp" },
+            { position: "Bendahara 1", name: "Hegar Zalekania", background: "bph/hegar.webp" },
+            { position: "Bendahara 2", name: "Retno Sari Sirotujanah", background: "bph/retno.webp" },
           ].map((member, index) => (
             <motion.div key={index} variants={itemVariants}>
               <Card position={member.position} name={member.name} background={member.background} />
