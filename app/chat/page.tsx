@@ -12,7 +12,6 @@ const Page = () => {
   const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
 
   const bottomRef = useRef<HTMLDivElement | null>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -21,7 +20,7 @@ const Page = () => {
   return (
     <>
       <div className="h-screen flex bg-gradient-to-br from-white via-red-200 to-red-100 selection:bg-red-700/80 selection:text-white">
-        <div className="w-full my-28 flex flex-col p-2 overflow-y-auto">
+        <div className="w-full mb-28 mt-10 flex flex-col p-2 overflow-y-auto">
           <div className="flex-1 space-y-3 w-full px-[30%] max-lg:px-[18%] max-md:px-[6%]">
             {messages.length === 0 && <NoChat />}
             {messages.map((message, index) => (
@@ -69,7 +68,7 @@ const Page = () => {
                 }`}
                 disabled={!input.trim() || isLoading}
               >
-                {isLoading ? <ImSpinner3 className="animate-spin"/> : <IoSend />}
+                {isLoading ? <ImSpinner3 className="animate-spin" /> : <IoSend />}
               </button>
             </form>
           </div>

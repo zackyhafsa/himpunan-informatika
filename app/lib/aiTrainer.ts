@@ -1,4 +1,11 @@
 export const data = {
+  dekan_fakultas_teknik: "Dony Susandi, S.T., M.T.",
+  wakilDekan1: "Ade Bastian, S.T., M.Kom.",
+  wakilDekan2: "Asep Rachmat, S.T., M.Kom.",
+  kepala_program_studi: "Harun Sujadi, S.T., M.Kom.",
+  kemahasiswaan: "Dadan Zaliluddin, S.T., M.Kom.",
+  fasilitas:
+    "laboratorium, ruang kelas yang dilengkapi dengan teknologi modern, perpustakaan, dan area diskusi (Yunus Diskusi dan Yunus Multimedia).",
   tentang_hmif: [
     "HMIF Universitas Majalengka berdiri pada tanggal 30 Maret 2011",
     "Terdapat 4 program studi di Fakultas Teknik: Informatika, Teknik Industri, Teknik Sipil, dan Teknik Mesin",
@@ -30,6 +37,9 @@ export const data = {
     "Puput Risna",
     "Rintan Nurhaliza",
     "Khoerul Anwar",
+    "Kafi Agung Gunawan (Anggota Muda)",
+    "Siti Solihah (Anggota Muda)",
+    "Annisa Aprilia Lestari (Anggota Muda)",
   ],
   external: [
     "M Farhan Basyari (Koordinator)",
@@ -39,6 +49,8 @@ export const data = {
     "Dwi Ferdiansyah",
     "Sunarjo",
     "M Fathu Rohman",
+    "Fitriani Jayus Saputri (Anggota Muda)",
+    "Yuda Tri Putra (Anggota Muda)",
   ],
   danus: [
     "Milhatun Nida (Koordinator)",
@@ -48,6 +60,9 @@ export const data = {
     "Ilham Fadilah",
     "Tri Maryani",
     "Shalma Primasari Dewi",
+    "Anna Miftakhul Khoiriah (Anggota Muda)",
+    "Joan Aryoadi (Anggota Muda)",
+    "Aril Muhamad Nazih Arib Ardabil (Anggota Muda)",
   ],
   kominfo: [
     "Irki Septian Nurfadilah (Koordinator)",
@@ -58,5 +73,7 @@ export const data = {
     "Riri Nurazizah",
     "Faizal Anugrah Pratama",
     "Maulana Nurafli",
+    "Afifah Puteri (Anggota Muda)",
+    "Faris Ilham Rabani (Anggota Muda)",
   ],
 };

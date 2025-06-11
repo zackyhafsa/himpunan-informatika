@@ -11,10 +11,7 @@ const Suggestion = () => {
             <p className="mt-4 text-gray-500">Jika Kalian punya saran, segera sampaikan yaaa :)</p>
           </div>
 
-          <form
-            action="https://docs.google.com/forms/u/0/d/e/1FAIpQLSckHf8bvAbpcnZt7PS2_q8gvHpsmtHsTVrwGlb4D3LaverQqQ/formResponse"
-            className="mx-auto mb-0 mt-8 max-w-md"
-          >
+          <form action="https://formspree.io/f/xqabqavp" method="POST" className="mx-auto mb-0 mt-8 max-w-md">
             <div>
               <label htmlFor="email" className="sr-only">
                 Email

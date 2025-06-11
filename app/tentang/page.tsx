@@ -51,7 +51,7 @@ const AboutUs = () => {
               <motion.div
                 className="col-span-2 row-span-2 bg-cover bg-center rounded-lg shadow-md"
                 style={{
-                  backgroundImage: "url(1.jpg)",
+                  backgroundImage: "url(1.webp)",
                   width: "100%",
                   height: "300px",
                 }}
@@ -62,7 +62,7 @@ const AboutUs = () => {
               <motion.div
                 className="bg-cover bg-center rounded-lg shadow-md"
                 style={{
-                  backgroundImage: "url(2.jpg)",
+                  backgroundImage: "url(2.webp)",
                   width: "100%",
                   height: "140px",
                 }}
@@ -73,7 +73,7 @@ const AboutUs = () => {
               <motion.div
                 className="bg-cover bg-center rounded-lg shadow-md"
                 style={{
-                  backgroundImage: "url(3.jpg)",
+                  backgroundImage: "url(3.webp)",
                   width: "100%",
                   height: "140px",
                 }}
@@ -84,7 +84,7 @@ const AboutUs = () => {
               <motion.div
                 className="col-span-2 bg-cover bg-center rounded-lg shadow-md"
                 style={{
-                  backgroundImage: "url(4.jpg)",
+                  backgroundImage: "url(4.webp)",
                   width: "100%",
                   height: "180px",
                 }}
@@ -95,7 +95,7 @@ const AboutUs = () => {
               <motion.div
                 className="bg-cover bg-center rounded-lg shadow-md"
                 style={{
-                  backgroundImage: "url(5.jpg)",
+                  backgroundImage: "url(5.webp)",
                   width: "100%",
                   height: "140px",
                 }}
