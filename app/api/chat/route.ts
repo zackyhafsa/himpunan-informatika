@@ -1,5 +1,6 @@
 import { data } from "@/app/lib/aiTrainer";
 import { openai } from "@ai-sdk/openai";
+import { google } from "@ai-sdk/google";
 import { streamText } from "ai";
 
 export const maxDuration = 30;
@@ -20,7 +21,8 @@ export async function POST(req: Request) {
     };
 
     const result = await streamText({
-      model: openai("gpt-4o-mini"),
+      model: google("gemini-1.5-flash"),
+      // model: openai("gpt-4o-mini"),
       messages: [systemPrompt, ...messages],
     });
 
