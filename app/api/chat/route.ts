@@ -21,8 +21,8 @@ export async function POST(req: Request) {
     };
 
     const result = await streamText({
-      model: google("gemini-1.5-flash"),
-      // model: openai("gpt-4o-mini"),
+      // model: google("gemini-1.5-flash"),
+      model: openai("gpt-4.1-mini"),
       messages: [systemPrompt, ...messages],
     });
 
