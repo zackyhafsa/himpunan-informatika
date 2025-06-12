@@ -4,6 +4,7 @@ export const data = {
   wakilDekan2: "Asep Rachmat, S.T., M.Kom.",
   kepala_program_studi: "Harun Sujadi, S.T., M.Kom.",
   kemahasiswaan: "Dadan Zaliluddin, S.T., M.Kom.",
+  dosen_informatika: "Nunu Nurdiana, S.T., M.Kom",
   fasilitas:
     "laboratorium, ruang kelas yang dilengkapi dengan teknologi modern, perpustakaan, dan area diskusi (Yunus Diskusi dan Yunus Multimedia).",
   tentang_hmif: [
