@@ -8,7 +8,15 @@ export const data = {
   wakilDekan2: "Asep Rachmat, S.T., M.Kom.",
   kepala_program_studi: "Harun Sujadi, S.T., M.Kom.",
   kemahasiswaan: "Dadan Zaliluddin, S.T., M.Kom.",
-  dosen_informatika: "Nunu Nurdiana, S.T., M.Kom",
+  dosen_informatika: [
+    "Dadan Zaliluddin, S.T., M.Kom.",
+    "Harun Sujadi, S.T., M.Kom.",
+    "Ade Bastian, S.T., M.Kom.",
+    "Nunu Nurdiana, S.T., M.Kom.",
+    "Dede Abdurahman, S.Kom., M.MSi.",
+    "Suhendri, S.T., M.Kom.",
+    "Tri Ferga Prasetyo, S.T., M.Kom.",
+  ],
   fasilitas:
     "laboratorium, ruang kelas yang dilengkapi dengan teknologi modern, perpustakaan, dan area diskusi (Yunus Diskusi dan Yunus Multimedia).",
   tentang_hmif: [
@@ -81,4 +89,8 @@ export const data = {
     "Afifah Puteri (Anggota Muda)",
     "Faris Ilham Rabani (Anggota Muda)",
   ],
+  komunitas: {
+    programming: "Zacky Hafsari (Ketua)",
+    windstand_robotik: "Tsaqib Ilham Nur (Ketua)",
+  },
 };
