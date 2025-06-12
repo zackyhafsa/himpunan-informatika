@@ -1,4 +1,8 @@
 export const data = {
+  rektor_universitas_majalengka: "Prof. Dr. Indra Adi Budiman, M.Pd",
+  wakilRektor1: "Jaka Sulaksana, S.P., M.P., Ph.D.",
+  wakilRektor2: "Prof. Dr. Sri Ayu Andayani, M.P.",
+  wakilRektor3: "H. Kosasih Sumantri, A.Pi., M.P.",
   dekan_fakultas_teknik: "Dony Susandi, S.T., M.T.",
   wakilDekan1: "Ade Bastian, S.T., M.Kom.",
   wakilDekan2: "Asep Rachmat, S.T., M.Kom.",
